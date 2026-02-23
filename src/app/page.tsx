@@ -1,3 +1,12 @@
+import { ProjectsList } from "@/components/projects/ProjectsList";
+import { Suspense } from "react";
+
 export default function HomePage() {
-  return <div></div>;
+  return (
+    <section>
+      <Suspense>
+        <ProjectsList />
+      </Suspense>
+    </section>
+  );
 }
