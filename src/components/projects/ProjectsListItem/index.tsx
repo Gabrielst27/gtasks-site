@@ -1,3 +1,4 @@
+import { Card } from '@/components/Card';
 import { ProjectModel } from '@/models/project';
 import clsx from 'clsx';
 import { Ellipsis } from 'lucide-react';
@@ -11,14 +12,7 @@ export function ProjectsListItem({ project }: ProjectsListItemProps) {
   //TODO: implement Link to redirect to project page on click
   //TODO: create options button
   return (
-    <div
-      className={clsx(
-        'p-4 my-4 w-full',
-        'bg-card-background',
-        'rounded-2xl',
-        'flex flex-col gap-2',
-      )}
-    >
+    <Card>
       <div className="flex justify-between gap-6">
         <h1 className="text-xl font-bold truncate">{project.name}</h1>
         <button>
@@ -27,7 +21,7 @@ export function ProjectsListItem({ project }: ProjectsListItemProps) {
       </div>
       <div
         className={clsx(
-          'bg-background',
+          'bg-text-background',
           'p-4',
           'rounded-2xl',
           'flex flex-col gap-2',
@@ -41,6 +35,6 @@ export function ProjectsListItem({ project }: ProjectsListItemProps) {
           <p className="italic text-slate-500">Sem descrição.</p>
         )}
       </div>
-    </div>
+    </Card>
   );
 }
