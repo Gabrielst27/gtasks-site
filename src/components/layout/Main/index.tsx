@@ -1,9 +1,13 @@
+import clsx from 'clsx';
+
 type MainProps = {
   children: React.ReactNode;
-};
+} & React.ComponentProps<'main'>;
 
-export function Main({ children }: MainProps) {
+export function Main({ children, className, ...rest }: MainProps) {
   return (
-    <main className="p-6 sm:mx-20 md:mx-30 lg:mx-40 xl:mx-50">{children}</main>
+    <main className={clsx('border-t mx-6 mb-6 pt-6', className)} {...rest}>
+      {children}
+    </main>
   );
 }
