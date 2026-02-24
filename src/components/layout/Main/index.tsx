@@ -1,5 +1,5 @@
 import ServiceUnavailablePage from '@/app/service-unavailable/page';
-import { checkApiHealth } from '@/lib/queries/health-check';
+import { checkApiHealth } from '@/lib/app/health-check';
 import clsx from 'clsx';
 
 type MainProps = {

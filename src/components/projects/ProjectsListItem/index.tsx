@@ -1,7 +1,8 @@
-import { Card } from '@/components/Card';
+import { CardLink } from '@/components/CardLink';
 import { ProjectModel } from '@/models/project';
 import clsx from 'clsx';
 import { Ellipsis } from 'lucide-react';
+import Link from 'next/link';
 
 export type ProjectsListItemProps = {
   project: ProjectModel;
@@ -12,7 +13,10 @@ export function ProjectsListItem({ project }: ProjectsListItemProps) {
   //TODO: implement Link to redirect to project page on click
   //TODO: create options button
   return (
-    <Card>
+    <CardLink
+      href={`projects/${project.slug}`}
+      aria-label={`Navegar para o post: ${project.name}`}
+    >
       <div className="flex justify-between gap-6">
         <h1 className="text-xl font-bold truncate">{project.name}</h1>
         <button>
@@ -35,6 +39,6 @@ export function ProjectsListItem({ project }: ProjectsListItemProps) {
           <p className="italic text-slate-500">Sem descrição.</p>
         )}
       </div>
-    </Card>
+    </CardLink>
   );
 }

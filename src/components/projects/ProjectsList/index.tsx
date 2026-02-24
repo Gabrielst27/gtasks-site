@@ -1,14 +1,21 @@
 import { ProjectsListItem } from '@/components/projects/ProjectsListItem';
-import { getProjectsCached } from '@/lib/queries/get-projects';
-import { Suspense } from 'react';
+import { getProjectsCached } from '@/lib/projects/queries/get-projects';
 
 export async function ProjectsList() {
-  const projects = await getProjectsCached();
-  return (
+  const projectsResponse = await getProjectsCached();
+  let content: React.ReactNode = (
     <div>
-      {projects.map((project) => {
-        return <ProjectsListItem key={project.id} project={project} />;
-      })}
+      <h1>Nenhum projeto ainda</h1>
     </div>
   );
+  if (projectsResponse.items.length) {
+    content = (
+      <div>
+        {projectsResponse.items.map((project) => {
+          return <ProjectsListItem key={project.id} project={project} />;
+        })}
+      </div>
+    );
+  }
+  return content;
 }
