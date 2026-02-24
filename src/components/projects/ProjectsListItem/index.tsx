@@ -14,7 +14,7 @@ export function ProjectsListItem({ project }: ProjectsListItemProps) {
     <div
       className={clsx(
         'p-4 my-4 w-full',
-        'bg-on-background',
+        'bg-card-background',
         'rounded-2xl',
         'flex flex-col gap-2',
       )}

@@ -4,7 +4,8 @@ import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Main } from '@/components/layout/Main';
 import { Sidebar } from '@/components/layout/Sidebar';
-import { Container } from '@/components/layout/Container';
+import { Container } from '@/components/Container';
+import { Suspense } from 'react';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -38,7 +39,9 @@ export default function RootLayout({
           <Sidebar className="hidden md:flex md:flex-1" />
           <Container className="md:flex-6 lg:flex-7">
             <Header />
-            <Main>{children}</Main>
+            <Suspense>
+              <Main>{children}</Main>
+            </Suspense>
           </Container>
         </Container>
       </body>

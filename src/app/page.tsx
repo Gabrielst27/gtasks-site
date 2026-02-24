@@ -1,5 +1,5 @@
-import { ProjectsList } from "@/components/projects/ProjectsList";
-import { Suspense } from "react";
+import { ProjectsList } from '@/components/projects/ProjectsList';
+import { Suspense } from 'react';
 
 export default function HomePage() {
   return (
