@@ -10,6 +10,7 @@ export function CardLink({ children, href }: CardLinkProps) {
     <Link
       href={href}
       className={clsx(
+        'shadow-md shadow-black',
         'p-4 my-4 w-full',
         'bg-card-background',
         'rounded-2xl',

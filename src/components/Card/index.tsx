@@ -11,6 +11,7 @@ export function Card({ px, py, gap, children }: CardProps) {
   return (
     <div
       className={clsx(
+        'shadow-md shadow-black',
         `px-${px} py-${py} my-4 w-full`,
         'bg-card-background',
         'rounded-2xl',
