@@ -1,5 +1,4 @@
 import { mapToProject } from '@/lib/projects/mappers/project-mapper';
-import { GetManyProjectsResponse } from '@/lib/projects/responses/get-many-projects-reponse';
 import { ProjectResponse } from '@/lib/projects/responses/project-response';
 import { GetManyAppResponse } from '@/lib/response';
 import { ProjectModel } from '@/models/project';
@@ -21,7 +20,7 @@ export async function getProjectsCached(): Promise<
   const response = await fetch(path, {
     method: 'GET',
   });
-  const json: GetManyProjectsResponse = await response.json();
+  const json: GetManyAppResponse<ProjectResponse> = await response.json();
   const projects = json.items.map((item) => mapToProject(item));
   return {
     ...json,

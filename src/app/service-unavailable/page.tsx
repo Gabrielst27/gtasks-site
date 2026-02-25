@@ -1,5 +1,11 @@
 import { Container } from '@/components/Container';
 import clsx from 'clsx';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Serviço indisponível',
+  description: 'Nossos serviços estão temporariamente indisponíveis',
+};
 
 export default function ServiceUnavailablePage() {
   return (
