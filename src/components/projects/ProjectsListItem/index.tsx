@@ -15,11 +15,11 @@ export function ProjectsListItem({ project }: ProjectsListItemProps) {
   return (
     <CardLink
       href={`projects/${project.slug}`}
-      aria-label={`Navegar para o post: ${project.name}`}
+      aria-label={`Navegar para o projeto: ${project.name}`}
     >
-      <div className="flex justify-between gap-6">
-        <h1 className="text-xl font-bold truncate">{project.name}</h1>
-        <button>
+      <div className="flex items-start justify-between gap-6">
+        <h1 className="text-xl font-bold min-w-0">{project.name}</h1>
+        <button className="shrink-0">
           <Ellipsis />
         </button>
       </div>

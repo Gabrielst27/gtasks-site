@@ -2,16 +2,19 @@ import clsx from 'clsx';
 
 type CardProps = {
   children: React.ReactNode;
+  px: number;
+  py: number;
+  gap: number;
 };
 
-export function Card({ children }: CardProps) {
+export function Card({ px, py, gap, children }: CardProps) {
   return (
     <div
       className={clsx(
-        'p-4 my-4 w-full',
+        `px-${px} py-${py} my-4 w-full`,
         'bg-card-background',
         'rounded-2xl',
-        'flex flex-col gap-2',
+        `flex flex-col gap-${gap}`,
       )}
     >
       {children}
