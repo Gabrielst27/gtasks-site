@@ -1,3 +1,4 @@
+import { SingleProject } from '@/components/projects/SingleProject';
 import { getProjectBySlugCached } from '@/lib/projects/queries/get-projects';
 import { Metadata } from 'next';
 
@@ -23,7 +24,7 @@ export default async function ProjectSlugPage({
   const project = await getProjectBySlugCached(slug);
   return (
     <section>
-      <h1>{project.name}</h1>
+      <SingleProject project={project} />
     </section>
   );
 }

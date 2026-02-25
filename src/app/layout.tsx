@@ -4,7 +4,6 @@ import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Main } from '@/components/layout/Main';
 import { Sidebar } from '@/components/layout/Sidebar';
-import { Container } from '@/components/Container';
 import { Suspense } from 'react';
 
 const geistSans = Geist({
@@ -35,15 +34,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Container className="flex min-h-screen">
-          <Sidebar className="hidden md:block fixed left-0 top-0 h-screen w-56" />
-          <Container className="md:ml-56 flex flex-1 flex-col">
+        <div className="flex min-h-screen">
+          <Sidebar className="hidden md:flex fixed left-0 top-0 h-screen w-48" />
+          <div className="md:ml-48 flex flex-1 flex-col">
             <Header />
             <Suspense>
               <Main className="flex-1 overflow-y-auto">{children}</Main>
             </Suspense>
-          </Container>
-        </Container>
+          </div>
+        </div>
       </body>
     </html>
   );

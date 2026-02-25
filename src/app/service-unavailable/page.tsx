@@ -1,4 +1,3 @@
-import { Container } from '@/components/Container';
 import clsx from 'clsx';
 import { Metadata } from 'next';
 
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
 export default function ServiceUnavailablePage() {
   return (
     <section>
-      <Container
+      <div
         className={clsx(
           'flex flex-col gap-6',
           'bg-text-background',
@@ -23,7 +22,7 @@ export default function ServiceUnavailablePage() {
           Oops... Nossos serviços estão temporariamente indisponíveis. Não se
           preocupe, logo disponibilizaremos novamente!
         </p>
-      </Container>
+      </div>
     </section>
   );
 }

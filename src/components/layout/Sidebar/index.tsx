@@ -6,7 +6,8 @@ export function Sidebar({ className, ...rest }: SidebarProps) {
   return (
     <div
       className={clsx(
-        'h-lvh p-4',
+        'items-start justify-start',
+        'p-6',
         'bg-card-background',
         ' rounded-2xl',
         className,

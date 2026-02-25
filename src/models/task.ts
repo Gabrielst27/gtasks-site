@@ -13,11 +13,12 @@ export enum TaskPriority {
 }
 
 export type TaskModel = {
+  id: string;
   title: string;
   description: string;
   status: TaskStatus;
   priority: TaskPriority;
-  dueDate: Date;
+  dueDate: Date | null;
   projectId: string;
   createdById: string;
   assigneeId: string;

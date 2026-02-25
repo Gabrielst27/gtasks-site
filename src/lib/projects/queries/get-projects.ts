@@ -3,10 +3,9 @@ import { ProjectResponse } from '@/lib/projects/responses/project-response';
 import { GetManyAppResponse } from '@/lib/response';
 import { ProjectModel } from '@/models/project';
 import { cacheLife, cacheTag } from 'next/cache';
-import { notFound } from 'next/navigation';
 
 const apiUrl = process.env.GTASKS_API_URL ?? '';
-const controllerUrl = process.env.API_PROJECTS_CONTROLLER ?? '';
+const basePath = `${apiUrl}/projects`;
 
 export async function getProjectsCached(): Promise<
   GetManyAppResponse<ProjectModel>
@@ -15,9 +14,8 @@ export async function getProjectsCached(): Promise<
   cacheLife('minutes');
   cacheTag('projects');
 
-  const path = `${apiUrl}/${controllerUrl}`;
   //TODO: implement getProjectsCached error threatment
-  const response = await fetch(path, {
+  const response = await fetch(basePath, {
     method: 'GET',
   });
   const json: GetManyAppResponse<ProjectResponse> = await response.json();
@@ -33,7 +31,7 @@ export async function getProjectByIdCached(id: string): Promise<ProjectModel> {
   cacheLife('minutes');
   cacheTag(`projects/id-${id}`);
 
-  const path = `${apiUrl}/${controllerUrl}/by-id/${id}`;
+  const path = `${basePath}/by-id/${id}`;
   //TODO: implement getProjectByIdCached error threatment
   const response = await fetch(path, {
     method: 'GET',
@@ -50,7 +48,7 @@ export async function getProjectBySlugCached(
   cacheLife('minutes');
   cacheTag(`projects/slug-${slug}`);
 
-  const path = `${apiUrl}/${controllerUrl}/by-slug/${slug}`;
+  const path = `${basePath}/by-slug/${slug}`;
   //TODO: implement getProjectBySlugCached error threatment
   const response = await fetch(path, {
     method: 'GET',

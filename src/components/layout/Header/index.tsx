@@ -7,7 +7,9 @@ export function Header() {
       <button className="md:hidden">
         <Menu />
       </button>
-      <h1 className="font-bold text-3xl">GTasks</h1>
+      <a href="/" className="font-bold text-3xl">
+        GTasks
+      </a>
       <div className="h-10 w-10 border rounded-full"></div>
     </header>
   );
