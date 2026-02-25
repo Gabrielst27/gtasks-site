@@ -9,6 +9,7 @@ export function ProfileMenu() {
   const { isOpen, close } = useProfileMenu();
 
   //TODO: implement logout
+  //TODO: implement find user
 
   return (
     <div
