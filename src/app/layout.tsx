@@ -35,12 +35,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Container className="md:flex">
-          <Sidebar className="hidden md:flex md:flex-1" />
-          <Container className="md:flex-6 lg:flex-7">
+        <Container className="flex min-h-screen">
+          <Sidebar className="hidden md:block fixed left-0 top-0 h-screen w-56" />
+          <Container className="md:ml-56 flex flex-1 flex-col">
             <Header />
             <Suspense>
-              <Main>{children}</Main>
+              <Main className="flex-1 overflow-y-auto">{children}</Main>
             </Suspense>
           </Container>
         </Container>

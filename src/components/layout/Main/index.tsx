@@ -6,7 +6,10 @@ type MainProps = {
 
 export async function Main({ children, className, ...rest }: MainProps) {
   return (
-    <main className={clsx('border-t mx-6 mb-6 pt-6', className)} {...rest}>
+    <main
+      className={clsx('min-h-lvh border-t mx-6 mb-6 pt-6', className)}
+      {...rest}
+    >
       {children}
     </main>
   );
