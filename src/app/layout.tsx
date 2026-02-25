@@ -5,6 +5,8 @@ import { Header } from '@/components/layout/Header';
 import { Main } from '@/components/layout/Main';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { Suspense } from 'react';
+import { ProfileMenu } from '@/components/layout/ProfileMenu';
+import { ProfileMenuProvider } from '@/contexts/profile-menu.context';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -34,15 +36,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex min-h-screen">
-          <Sidebar className="hidden md:flex fixed left-0 top-0 h-screen w-48" />
-          <div className="md:ml-48 flex flex-1 flex-col">
-            <Header />
-            <Suspense>
-              <Main className="flex-1 overflow-y-auto">{children}</Main>
-            </Suspense>
+        <ProfileMenuProvider>
+          <div className="flex min-h-screen">
+            <Sidebar className="hidden md:flex fixed left-0 top-0 h-screen w-48" />
+            <div className="md:ml-48 flex flex-1 flex-col">
+              <Header />
+              <Suspense>
+                <Main className="flex-1 overflow-y-auto">{children}</Main>
+              </Suspense>
+            </div>
+            <ProfileMenu />
           </div>
-        </div>
+        </ProfileMenuProvider>
       </body>
     </html>
   );

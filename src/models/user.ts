@@ -1,6 +1,6 @@
 import { Model } from '@/models/model';
 
-export type User = {
+export type UserModel = {
   id: string;
   name: string;
   email: string;

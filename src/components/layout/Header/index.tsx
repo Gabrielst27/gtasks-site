@@ -1,3 +1,4 @@
+import { AvatarPreview } from '@/components/AvatarPreview';
 import clsx from 'clsx';
 import { Menu } from 'lucide-react';
 
@@ -10,7 +11,7 @@ export function Header() {
       <a href="/" className="font-bold text-3xl">
         GTasks
       </a>
-      <div className="h-10 w-10 border rounded-full"></div>
+      <AvatarPreview />
     </header>
   );
 }
