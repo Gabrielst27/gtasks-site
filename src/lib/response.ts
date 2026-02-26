@@ -1,6 +1,6 @@
 export type AppResponse = {
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type GetManyAppResponse<R extends AppResponse> = {

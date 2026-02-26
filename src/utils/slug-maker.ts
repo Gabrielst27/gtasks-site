@@ -10,6 +10,6 @@ export function makeSlug(title: string): string {
   const startIndex = Number.parseInt(start) + 2;
   const randomString = Math.random()
     .toString(36)
-    .substring(startIndex, startIndex + 6);
+    .substring(startIndex, startIndex + 8);
   return `${slug}-${randomString}`;
 }

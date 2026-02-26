@@ -1,6 +1,7 @@
 import { mapToProject } from '@/lib/projects/mappers/project-mapper';
 import { ProjectResponse } from '@/lib/projects/responses/project-response';
 import { GetManyAppResponse } from '@/lib/response';
+import { GetManyModels } from '@/models/get-many-models';
 import { ProjectModel } from '@/models/project';
 import { cacheLife, cacheTag } from 'next/cache';
 
@@ -8,7 +9,7 @@ const apiUrl = process.env.GTASKS_API_URL ?? '';
 const basePath = `${apiUrl}/projects`;
 
 export async function getProjectsCached(): Promise<
-  GetManyAppResponse<ProjectModel>
+  GetManyModels<ProjectModel>
 > {
   'use cache';
   cacheLife('minutes');

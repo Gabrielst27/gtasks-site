@@ -1,4 +1,4 @@
 export type Model = {
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 };

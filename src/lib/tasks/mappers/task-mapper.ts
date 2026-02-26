@@ -17,8 +17,8 @@ export function mapToTask(task: TaskResponse): TaskModel {
     assigneeId: task.assigneeId,
     createdById: task.createdById,
     projectId: task.projectId,
-    createdAt: new Date(task.createdAt),
-    updatedAt: new Date(task.updatedAt),
+    createdAt: task.createdAt.toISOString(),
+    updatedAt: task.updatedAt.toISOString(),
   };
   return model;
 }

@@ -8,7 +8,7 @@ export function mapToProject(response: ProjectResponse): ProjectModel {
     description: response.description,
     slug: response.slug,
     createdById: response.createdById,
-    createdAt: new Date(response.createdAt),
-    updatedAt: new Date(response.updatedAt),
+    createdAt: response.createdAt,
+    updatedAt: response.updatedAt,
   };
 }
