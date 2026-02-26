@@ -25,7 +25,7 @@ export function Sidebar({ className, ...rest }: SidebarProps) {
         aria-modal={true}
         onClick={(e) => e.stopPropagation()}
         className={clsx(
-          'flex flex-col justify-between',
+          'flex flex-col justify-start md:justify-between',
           'w-48',
           'py-6 px-2',
           'shadow-xl shadow-black',
@@ -39,8 +39,8 @@ export function Sidebar({ className, ...rest }: SidebarProps) {
             GTasks
           </h1>
         </div>
-        <div className="hidden w-full md:flex flex-col">
-          <div className="w-full border-b flex flex-col items-center justify-center gap-4 p-4 mb-4">
+        <div className="w-full flex flex-col">
+          <div className="hidden md:flex w-full border-b flex-col items-center justify-center gap-4 p-4 mb-4">
             <Avatar />
             <h1>Nome do usuário</h1>
           </div>
@@ -48,7 +48,7 @@ export function Sidebar({ className, ...rest }: SidebarProps) {
             <a href="/">Home</a>
           </div>
         </div>
-        <div className="w-full flex flex-col items-center justify-start">
+        <div className="hidden w-full md:flex flex-col items-center justify-start">
           <button className="cursor-pointer">Sair</button>
         </div>
       </div>

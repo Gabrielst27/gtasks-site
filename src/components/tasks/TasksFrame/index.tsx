@@ -17,7 +17,7 @@ export async function TasksFrame({ projectId }: TasksFrameProps) {
   );
   const done = tasks.filter((task) => task.status === TaskStatus.DONE);
   return (
-    <Card px={2} py={4} gap={4}>
+    <Card className="flex-col">
       <h1 className="text-center text-xl font-bold">Tarefas</h1>
       <Line />
       <TasksTable title="To do" tasks={toDo} />

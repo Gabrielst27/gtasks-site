@@ -1,8 +1,8 @@
+import { Card } from '@/components/Card';
 import { CardLink } from '@/components/CardLink';
 import { ProjectModel } from '@/models/project';
 import clsx from 'clsx';
-import { Ellipsis } from 'lucide-react';
-import Link from 'next/link';
+import { Delete, Ellipsis, Trash } from 'lucide-react';
 
 export type ProjectsListItemProps = {
   project: ProjectModel;
@@ -14,15 +14,11 @@ export function ProjectsListItem({ project }: ProjectsListItemProps) {
   //TODO: create options button
   return (
     <CardLink
+      className="flex-col p-4"
       href={`projects/${project.slug}`}
       aria-label={`Navegar para o projeto: ${project.name}`}
     >
-      <div className="flex items-start justify-between gap-6">
-        <h1 className="text-xl font-bold min-w-0">{project.name}</h1>
-        <button className="shrink-0">
-          <Ellipsis />
-        </button>
-      </div>
+      <h1 className="text-xl font-bold min-w-0">{project.name}</h1>
       <div
         className={clsx(
           'bg-text-background',
