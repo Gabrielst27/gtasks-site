@@ -20,6 +20,9 @@ export async function getProjectsCached(): Promise<
     method: 'GET',
   });
   const json: GetManyAppResponse<ProjectResponse> = await response.json();
+  if (!json.items) {
+    return json;
+  }
   const projects = json.items.map((item) => mapToProject(item));
   return {
     ...json,

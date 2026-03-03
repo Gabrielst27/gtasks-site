@@ -8,7 +8,7 @@ export async function ProjectsList() {
       <h1>Nenhum projeto ainda</h1>
     </div>
   );
-  if (projectsResponse.items.length) {
+  if (projectsResponse.items && projectsResponse.items.length) {
     content = (
       <div>
         {projectsResponse.items.map((project) => {

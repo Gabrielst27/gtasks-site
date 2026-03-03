@@ -5,7 +5,7 @@ import { useSidebar } from '@/contexts/sidebar.context';
 import clsx from 'clsx';
 import { Menu } from 'lucide-react';
 
-export function Header() {
+export function AppHeader() {
   const { toggle } = useSidebar();
 
   return (
