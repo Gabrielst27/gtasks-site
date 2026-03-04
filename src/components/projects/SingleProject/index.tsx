@@ -1,6 +1,7 @@
 import { TasksFrame } from '@/components/tasks/TasksFrame';
 import { ProjectModel } from '@/models/project';
 import clsx from 'clsx';
+import { log } from 'console';
 import { Suspense } from 'react';
 
 type SingleProjectProps = {

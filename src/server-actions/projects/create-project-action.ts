@@ -1,5 +1,6 @@
 'use server';
 
+import { getCurrentSession } from '@/lib/auth/manage-login';
 import { ProjectCreateSchema } from '@/lib/projects/validation';
 import { CreateProjectDto } from '@/utils/dto/projects/create-project.dto';
 import {
@@ -9,6 +10,7 @@ import {
 import { getZodErrorMessages } from '@/utils/get-zod-error-messages';
 import { ERoutes } from '@/utils/routes.enum';
 import { makeSlug } from '@/utils/slug-maker';
+import { log } from 'console';
 import { revalidateTag } from 'next/cache';
 import { redirect } from 'next/navigation';
 
@@ -44,14 +46,16 @@ export async function createProjectAction(
     ...validPostData,
     slug: makeSlug(validPostData.name),
   };
-
+  let canRedirect: boolean = false;
   try {
     const path = `${process.env.GTASKS_API_URL}/projects`;
     const body = JSON.stringify(newProject);
+    const token = await getCurrentSession();
     const response = await fetch(path, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
       body,
     });
@@ -69,7 +73,10 @@ export async function createProjectAction(
         errors: [`Erro: ${text}`],
       };
     }
-    revalidateTag('projects', 'max');
+    if (response.status >= 200 && response.status <= 299) {
+      canRedirect = true;
+      revalidateTag('projects', 'max');
+    }
   } catch (e) {
     if (e instanceof Error) {
       return {
@@ -82,5 +89,11 @@ export async function createProjectAction(
       errors: ['[ERR-001]: Por favor, contate o suporte'],
     };
   }
-  redirect(`${ERoutes.PROJECTS}/${newProject.slug}`);
+  if (canRedirect) {
+    redirect(`${ERoutes.PROJECTS}/${newProject.slug}`);
+  }
+  return {
+    formState: makePartialPublicProject(newProject),
+    errors: ['[ERR-003]: Por favor, contate o suporte'],
+  };
 }

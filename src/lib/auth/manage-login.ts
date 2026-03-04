@@ -1,3 +1,4 @@
+import { ErrorMessages } from '@/utils/error-messages.enum';
 import { decodeJwt } from 'jose';
 import { cookies } from 'next/headers';
 
@@ -5,7 +6,7 @@ const loginCookieName = process.env.LOGIN_COOKIE_NAME ?? '';
 
 export async function createLoginSession(token: string) {
   if (!token) {
-    throw new Error('Token inválido');
+    throw new Error(ErrorMessages.UNAUTHORIZED);
   }
   const cookieStore = await cookies();
   const payload = decodeJwt(token);
@@ -16,4 +17,13 @@ export async function createLoginSession(token: string) {
     sameSite: 'strict',
     expires: expiresAt,
   });
+}
+
+export async function getCurrentSession(): Promise<string> {
+  const cookieStore = await cookies();
+  const token = cookieStore.get(loginCookieName);
+  if (!token) {
+    throw new Error(ErrorMessages.UNAUTHORIZED);
+  }
+  return token.value;
 }
