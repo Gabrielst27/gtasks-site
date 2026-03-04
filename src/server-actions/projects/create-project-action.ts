@@ -56,10 +56,18 @@ export async function createProjectAction(
       body,
     });
 
-    //TODO: improve create project action error threatment
-    if (!response.ok) {
-      const text = await response.text();
-      throw new Error(`Erro ao criar projeto (${response.status}): ${text}`);
+    if (response.status === 401) {
+      return {
+        formState: makePartialPublicProject(formDataObject),
+        errors: ['Usuário não autorizado'],
+      };
+    }
+    if (response.status > 299) {
+      const text = await response.statusText;
+      return {
+        formState: makePartialPublicProject(formDataObject),
+        errors: [`Erro: ${text}`],
+      };
     }
     revalidateTag('projects', 'max');
   } catch (e) {
