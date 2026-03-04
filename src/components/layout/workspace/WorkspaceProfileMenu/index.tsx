@@ -5,7 +5,7 @@ import { Line } from '@/components/Line';
 import { useProfileMenu } from '@/contexts/profile-menu.context';
 import clsx from 'clsx';
 
-export function ProfileMenu() {
+export function WorkspaceProfileMenu() {
   const { isOpen, close } = useProfileMenu();
 
   //TODO: implement logout

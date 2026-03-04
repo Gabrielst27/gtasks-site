@@ -7,6 +7,7 @@ import {
   PublicProjectDto,
 } from '@/utils/dto/projects/public-project.dto';
 import { getZodErrorMessages } from '@/utils/get-zod-error-messages';
+import { ERoutes } from '@/utils/routes.enum';
 import { makeSlug } from '@/utils/slug-maker';
 import { revalidateTag } from 'next/cache';
 import { redirect } from 'next/navigation';
@@ -73,5 +74,5 @@ export async function createProjectAction(
       errors: ['[ERR-001]: Por favor, contate o suporte'],
     };
   }
-  redirect(`/projects/${newProject.slug}`);
+  redirect(`${ERoutes.PROJECTS}/${newProject.slug}`);
 }

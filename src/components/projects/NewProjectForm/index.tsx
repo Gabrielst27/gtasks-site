@@ -1,6 +1,6 @@
 'use client';
 
-import { Card } from '@/components/Card';
+import { Button } from '@/components/Button';
 import { InputText } from '@/components/InputText';
 import { InputTextArea } from '@/components/InputTextArea';
 import { createProjectAction } from '@/server-actions/projects/create-project-action';
@@ -37,19 +37,9 @@ export function NewProjectForm() {
           placeholder="Digite a descrição do projeto"
         />
 
-        <div className="flex flex-col">
-          <button className="cursor-pointer" type="submit">
-            <Card className="justify-center bg-red-500">
-              <Trash />
-              <p>Cancelar</p>
-            </Card>
-          </button>
-          <button className="cursor-pointer" type="submit">
-            <Card className="justify-center">
-              <Save />
-              <p>Salvar</p>
-            </Card>
-          </button>
+        <div className="flex flex-col gap-4">
+          <Button variant="danger" icon={Trash} text="Excluir" />
+          <Button icon={Save} text="Salvar" />
         </div>
       </div>
     </form>

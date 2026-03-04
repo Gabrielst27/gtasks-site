@@ -1,6 +1,7 @@
 import { Card } from '@/components/Card';
 import { CardLink } from '@/components/CardLink';
 import { ProjectModel } from '@/models/project';
+import { ERoutes } from '@/utils/routes.enum';
 import clsx from 'clsx';
 import { Delete, Ellipsis, Trash } from 'lucide-react';
 
@@ -15,7 +16,7 @@ export function ProjectsListItem({ project }: ProjectsListItemProps) {
   return (
     <CardLink
       className="flex-col p-4"
-      href={`projects/${project.slug}`}
+      href={`${ERoutes.PROJECTS}/${project.slug}`}
       aria-label={`Navegar para o projeto: ${project.name}`}
     >
       <h1 className="text-xl font-bold min-w-0">{project.name}</h1>

@@ -1,10 +1,11 @@
 'use server';
 
+import { createLoginSession } from '@/lib/auth/manage-login';
 import { LoginSchema } from '@/lib/auth/validation';
 import { LoginDto } from '@/utils/dto/auth/login.dto';
 import { getZodErrorMessages } from '@/utils/get-zod-error-messages';
-import { log } from 'console';
-import { cacheLife, cacheTag } from 'next/cache';
+import { ERoutes } from '@/utils/routes.enum';
+import { redirect } from 'next/navigation';
 
 export type LoginActionState = {
   email: string;
@@ -51,8 +52,10 @@ export async function loginAction(
       headers: { 'Content-type': 'application/json' },
       body,
     });
+
     const json: { token: string } = await result.json();
-    log(json);
+
+    await createLoginSession(json.token);
   } catch (e) {
     if (e instanceof Error) {
       return {
@@ -65,9 +68,5 @@ export async function loginAction(
       errors: ['[ERR-002]: Por favor, contate o suporte'],
     };
   }
-
-  return {
-    email,
-    errors: ['Dados inválidos'],
-  };
+  redirect(ERoutes.WORKSPACE);
 }

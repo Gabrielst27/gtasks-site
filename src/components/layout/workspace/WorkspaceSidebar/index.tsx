@@ -2,11 +2,12 @@
 
 import { Avatar } from '@/components/Avatar';
 import { useSidebar } from '@/contexts/sidebar.context';
+import { ERoutes } from '@/utils/routes.enum';
 import clsx from 'clsx';
 
 export type SidebarProps = React.ComponentProps<'div'>;
 
-export function Sidebar({ className, ...rest }: SidebarProps) {
+export function WorkspaceSidebar({ className, ...rest }: SidebarProps) {
   const { isOpen, close } = useSidebar();
   //TODO: implement logout
   //TODO: implement find user
@@ -45,7 +46,7 @@ export function Sidebar({ className, ...rest }: SidebarProps) {
             <h1>Nome do usuário</h1>
           </div>
           <div className="w-full flex flex-col items-center justify-start">
-            <a href="/">Home</a>
+            <a href={ERoutes.WORKSPACE}>Workspace</a>
           </div>
         </div>
         <div className="hidden w-full md:flex flex-col items-center justify-start">
