@@ -3,17 +3,25 @@
 import { Avatar } from '@/components/Avatar';
 import { Button } from '@/components/Button';
 import { Dialog } from '@/components/Dialog';
+import { ProfileContainer } from '@/components/ProfileContainer';
 import { useSidebar } from '@/contexts/sidebar.context';
 import { logout } from '@/lib/auth/manage-login';
+import { ProfileDto } from '@/utils/dto/users/profile.dto';
 import { ERoutes } from '@/utils/routes.enum';
 import clsx from 'clsx';
 import { LogOut } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useState, useTransition } from 'react';
+import { Suspense, useState, useTransition } from 'react';
 
-export type SidebarProps = React.ComponentProps<'div'>;
+export type SidebarProps = {
+  profile: ProfileDto;
+} & React.ComponentProps<'div'>;
 
-export function WorkspaceSidebar({ className, ...rest }: SidebarProps) {
+export function WorkspaceSidebar({
+  profile,
+  className,
+  ...rest
+}: SidebarProps) {
   const { isOpen, close } = useSidebar();
   //TODO: implement logout
   //TODO: implement find user
@@ -74,7 +82,7 @@ export function WorkspaceSidebar({ className, ...rest }: SidebarProps) {
           <div className="w-full flex flex-col">
             <div className="hidden md:flex w-full border-b flex-col items-center justify-center gap-4 p-4 mb-4">
               <Avatar />
-              <h1>Nome do usuário</h1>
+              <h1>{profile.name}</h1>
             </div>
             <div className="w-full flex flex-col items-center justify-start">
               <a href={ERoutes.WORKSPACE}>Workspace</a>

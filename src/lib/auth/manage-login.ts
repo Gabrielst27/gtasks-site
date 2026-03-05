@@ -1,6 +1,8 @@
 'use server';
 
+import { ProfileDto } from '@/utils/dto/users/profile.dto';
 import { ErrorMessages } from '@/utils/error-messages.enum';
+import { log } from 'console';
 import { decodeJwt } from 'jose';
 import { cookies } from 'next/headers';
 
@@ -33,4 +35,15 @@ export async function getCurrentSession(): Promise<string> {
 export async function logout() {
   const cookieStore = await cookies();
   await cookieStore.delete(loginCookieName);
+}
+
+export async function getProfile() {
+  const token = await getCurrentSession();
+  const payload = decodeJwt(token);
+  return {
+    name: `${payload.name}`,
+    id: `${payload.id}`,
+    email: `${payload.email}`,
+    token: `${payload.token}` || null,
+  };
 }

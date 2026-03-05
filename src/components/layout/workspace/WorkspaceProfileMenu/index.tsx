@@ -6,13 +6,18 @@ import { Dialog } from '@/components/Dialog';
 import { Line } from '@/components/Line';
 import { useProfileMenu } from '@/contexts/profile-menu.context';
 import { logout } from '@/lib/auth/manage-login';
+import { ProfileDto } from '@/utils/dto/users/profile.dto';
 import { ERoutes } from '@/utils/routes.enum';
 import clsx from 'clsx';
 import { LogOut } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState, useTransition } from 'react';
 
-export function WorkspaceProfileMenu() {
+type WorkspaceProfileMenuProps = {
+  profile: ProfileDto;
+};
+
+export function WorkspaceProfileMenu({ profile }: WorkspaceProfileMenuProps) {
   const { isOpen, close } = useProfileMenu();
   const [isExitPending, startExitTransition] = useTransition();
   const [isExitDialogOpen, setExitDialog] = useState(false);
@@ -55,7 +60,7 @@ export function WorkspaceProfileMenu() {
       >
         <div className="flex flex-col items-center justify-center gap-4">
           <Avatar />
-          <h1>Nome do usuário</h1>
+          <h1>{profile.name}</h1>
         </div>
         <Line />
         <div className="flex flex-col items-center justify-center gap-4">
