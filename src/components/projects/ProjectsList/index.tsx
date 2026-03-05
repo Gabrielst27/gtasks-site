@@ -7,6 +7,9 @@ import { redirect } from 'next/navigation';
 
 export async function ProjectsList() {
   const token = await getCurrentSession();
+  if (!token) {
+    return null;
+  }
   let content: React.ReactNode = (
     <div>
       <h1>Nenhum projeto ainda</h1>

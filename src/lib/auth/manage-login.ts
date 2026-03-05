@@ -38,12 +38,16 @@ export async function logout() {
 }
 
 export async function getProfile() {
-  const token = await getCurrentSession();
-  const payload = decodeJwt(token);
-  return {
-    name: `${payload.name}`,
-    id: `${payload.id}`,
-    email: `${payload.email}`,
-    token: `${payload.token}` || null,
-  };
+  try {
+    const token = await getCurrentSession();
+    const payload = decodeJwt(token);
+    return {
+      name: `${payload.name}`,
+      id: `${payload.id}`,
+      email: `${payload.email}`,
+      token: `${payload.token}` || null,
+    };
+  } catch {
+    return null;
+  }
 }

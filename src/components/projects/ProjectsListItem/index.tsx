@@ -1,9 +1,7 @@
-import { Card } from '@/components/Card';
 import { CardLink } from '@/components/CardLink';
 import { ProjectModel } from '@/models/project';
 import { ERoutes } from '@/utils/routes.enum';
 import clsx from 'clsx';
-import { Delete, Ellipsis, Trash } from 'lucide-react';
 
 export type ProjectsListItemProps = {
   project: ProjectModel;
