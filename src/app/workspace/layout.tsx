@@ -8,10 +8,7 @@ import { Metadata } from 'next';
 import { Suspense } from 'react';
 
 export const metadata: Metadata = {
-  title: {
-    default: 'Gtasks',
-    template: '%s | Gtasks',
-  },
+  title: 'Workspace',
   description: 'A simple workspace',
 };
 

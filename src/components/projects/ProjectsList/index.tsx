@@ -4,7 +4,6 @@ import { getProjectsCached } from '@/lib/projects/queries/get-projects';
 import { ErrorMessages } from '@/utils/error-messages.enum';
 import { ERoutes } from '@/utils/routes.enum';
 import { redirect } from 'next/navigation';
-import { toast } from 'react-toastify';
 
 export async function ProjectsList() {
   const token = await getCurrentSession();
@@ -25,9 +24,7 @@ export async function ProjectsList() {
       );
     }
   } catch (e) {
-    toast.dismiss;
     if (e instanceof Error) {
-      toast.error(e.message);
       if (e.message === ErrorMessages.UNAUTHORIZED) {
         redirect(ERoutes.LOGIN);
       }

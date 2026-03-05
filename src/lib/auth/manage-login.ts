@@ -1,3 +1,5 @@
+'use server';
+
 import { ErrorMessages } from '@/utils/error-messages.enum';
 import { decodeJwt } from 'jose';
 import { cookies } from 'next/headers';
@@ -8,9 +10,9 @@ export async function createLoginSession(token: string) {
   if (!token) {
     throw new Error(ErrorMessages.UNAUTHORIZED);
   }
-  const cookieStore = await cookies();
   const payload = decodeJwt(token);
   const expiresAt = new Date(payload.exp! * 1000);
+  const cookieStore = await cookies();
   cookieStore.set(loginCookieName, token, {
     httpOnly: true,
     secure: true,
@@ -26,4 +28,9 @@ export async function getCurrentSession(): Promise<string> {
     throw new Error(ErrorMessages.UNAUTHORIZED);
   }
   return token.value;
+}
+
+export async function logout() {
+  const cookieStore = await cookies();
+  await cookieStore.delete(loginCookieName);
 }
