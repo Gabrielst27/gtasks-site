@@ -15,29 +15,36 @@ export function LoginForm() {
   const [state, action, isPending] = useActionState(loginAction, initialState);
 
   return (
-    <form className="flex flex-col gap-4" action={action}>
-      <InputText
-        name="email"
-        type="text"
-        aria-label="Entrada para o email do usuário"
-        placeholder="E-mail"
-        icon={Mail}
-        minLength={12}
-        maxLength={128}
-        defaultValue={state.email}
+    <form className="flex flex-col gap-10 w-full" action={action}>
+      <div className="mx-5 flex flex-col gap-2">
+        <InputText
+          name="email"
+          type="text"
+          aria-label="Entrada para o email do usuário"
+          placeholder="E-mail"
+          icon={Mail}
+          minLength={12}
+          maxLength={128}
+          defaultValue={state.email}
+          disabled={isPending}
+        ></InputText>
+        <InputText
+          name="password"
+          type="password"
+          aria-label="Entrada para a senha do usuário"
+          placeholder="Senha"
+          icon={LockKeyhole}
+          minLength={6}
+          maxLength={128}
+          disabled={isPending}
+        ></InputText>
+      </div>
+      <Button
+        className="mx-5"
+        icon={LogIn}
+        text="Entrar"
         disabled={isPending}
-      ></InputText>
-      <InputText
-        name="password"
-        type="password"
-        aria-label="Entrada para a senha do usuário"
-        placeholder="Senha"
-        icon={LockKeyhole}
-        minLength={6}
-        maxLength={128}
-        disabled={isPending}
-      ></InputText>
-      <Button icon={LogIn} text="Entrar" disabled={isPending} />
+      />
     </form>
   );
 }
