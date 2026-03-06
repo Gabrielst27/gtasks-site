@@ -10,7 +10,7 @@ export function Card({ className, children }: CardProps) {
       className={clsx(
         className,
         'shadow-md shadow-black',
-        `px-2 py-2 my-4 w-full`,
+        `px-2 py-2 w-full`,
         'bg-card-background rounded-2xl',
         `flex gap-2`,
       )}

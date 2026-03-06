@@ -19,6 +19,9 @@ type AppLayoutProps = {
 
 export default async function AppLayout({ children }: AppLayoutProps) {
   const profile = await getProfile();
+  if (!profile) {
+    return null;
+  }
   return (
     <>
       <ProfileMenuProvider>

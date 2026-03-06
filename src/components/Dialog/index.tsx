@@ -28,10 +28,10 @@ export function Dialog({
     <div className={classes} aria-modal={true} onClick={onCancel}>
       <div
         className={clsx(
-          'w-full max-w-120 h-80 m-10 p-6',
+          'w-full max-w-120 m-10 p-6',
           'bg-background shadow-2xl shadow-black',
           'rounded-2xl',
-          'flex flex-col gap-4 justify-between items-center',
+          'flex flex-col gap-6 justify-between items-center',
         )}
         onClick={(event) => event.stopPropagation()}
       >

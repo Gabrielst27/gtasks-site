@@ -42,9 +42,9 @@ export async function getProfile() {
     const token = await getCurrentSession();
     const payload = decodeJwt(token);
     return {
-      name: `${payload.name}`,
-      id: `${payload.id}`,
-      email: `${payload.email}`,
+      name: `${payload.name ?? ''}`,
+      id: `${payload.id ?? ''}`,
+      email: `${payload.email ?? ''}`,
       token: `${payload.token}` || null,
     };
   } catch {

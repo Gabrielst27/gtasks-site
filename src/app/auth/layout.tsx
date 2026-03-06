@@ -1,4 +1,3 @@
-import { Main } from '@/components/layout/Main';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -16,7 +15,7 @@ type AuthLayoutProps = {
 export default function AuthLayout({ children }: AuthLayoutProps) {
   return (
     <>
-      <Main>{children}</Main>
+      <main>{children}</main>
     </>
   );
 }
