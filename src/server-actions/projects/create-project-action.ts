@@ -63,7 +63,13 @@ export async function createProjectAction(
     if (response.status === 401) {
       return {
         formState: makePartialPublicProject(formDataObject),
-        errors: ['Usuário não autorizado'],
+        errors: ['Usuário não autenticado'],
+      };
+    }
+    if (response.status === 403) {
+      return {
+        formState: makePartialPublicProject(formDataObject),
+        errors: ['Usuário sem permissão'],
       };
     }
     if (response.status > 299) {

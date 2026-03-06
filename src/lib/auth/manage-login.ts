@@ -1,5 +1,7 @@
 'use server';
 
+import { Role } from '@/models/user';
+import { JwtPayload } from '@/utils/dto/auth/jwt-payload.dto';
 import { ProfileDto } from '@/utils/dto/users/profile.dto';
 import { ErrorMessages } from '@/utils/error-messages.enum';
 import { log } from 'console';
@@ -37,15 +39,16 @@ export async function logout() {
   await cookieStore.delete(loginCookieName);
 }
 
-export async function getProfile() {
+export async function getProfile(): Promise<ProfileDto | null> {
   try {
     const token = await getCurrentSession();
-    const payload = decodeJwt(token);
+    const payload: JwtPayload = decodeJwt(token);
+    const roleMapper = { admin: Role.ADMIN, user: Role.USER };
     return {
-      name: `${payload.name ?? ''}`,
-      id: `${payload.id ?? ''}`,
-      email: `${payload.email ?? ''}`,
-      token: `${payload.token}` || null,
+      name: payload.name,
+      id: payload.sub ?? '',
+      email: payload.email,
+      role: payload.role,
     };
   } catch {
     return null;

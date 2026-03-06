@@ -6,12 +6,12 @@ export default function SignUp() {
   return (
     <section
       className={clsx(
-        'h-lvh',
+        'h-dvh',
         'flex flex-col items-center justify-between gap-8',
         'md:flex-row',
       )}
     >
-      <div className="flex-2 flex items-center justify-center lg:flex-4">
+      <div className="hidden flex-4 md:flex items-center justify-center">
         <h1 className="font-extrabold text-5xl">GTasks</h1>
       </div>
       <Card

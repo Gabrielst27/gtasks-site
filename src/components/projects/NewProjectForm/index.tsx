@@ -31,7 +31,7 @@ export function NewProjectForm() {
     <form action={action}>
       <div className="flex flex-col gap-6">
         <InputText
-          maxLength={64}
+          maxLength={32}
           type="text"
           name="name"
           labeltext="Nome"
