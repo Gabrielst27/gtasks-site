@@ -1,12 +1,12 @@
-import { LoginForm } from '@/components/auth/LoginForm';
+import { SignUpForm } from '@/components/auth/SignUpForm';
 import { Card } from '@/components/Card';
 import clsx from 'clsx';
 
-export default function LoginPage() {
+export default function SignUp() {
   return (
     <section
       className={clsx(
-        'h-dvh',
+        'h-lvh',
         'flex flex-col items-center justify-between gap-8',
         'md:flex-row',
       )}
@@ -24,8 +24,8 @@ export default function LoginPage() {
           'lg:flex-3',
         )}
       >
-        <h1 className="font-bold text-2xl">Login</h1>
-        <LoginForm />
+        <h1 className="font-bold text-2xl">Criar conta</h1>
+        <SignUpForm />
       </Card>
     </section>
   );

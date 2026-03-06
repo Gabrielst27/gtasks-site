@@ -5,4 +5,5 @@ export enum ERoutes {
   SERVICE_UNAVAILABLE = '/service-unavailable',
   AUTH = '/auth',
   LOGIN = '/auth/login',
+  SIGN_UP = '/auth/sign-up',
 }

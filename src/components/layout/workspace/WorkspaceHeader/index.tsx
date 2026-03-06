@@ -6,7 +6,6 @@ import { useSidebar } from '@/contexts/sidebar.context';
 import { ERoutes } from '@/utils/routes.enum';
 import clsx from 'clsx';
 import { Menu } from 'lucide-react';
-import { Bounce, ToastContainer } from 'react-toastify';
 
 export function WorkspaceHeader() {
   const { toggle } = useSidebar();
@@ -22,19 +21,6 @@ export function WorkspaceHeader() {
         </a>
         <AvatarPreview />
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-        transition={Bounce}
-      />
       <Line />
     </header>
   );
